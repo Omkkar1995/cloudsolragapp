@@ -7,7 +7,7 @@ function handleLogin() {
         return;
     }
 
-    fetch("http://localhost:8000/login", {
+    fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
@@ -52,7 +52,7 @@ async function askQuestion() {
     input.value = '';
 
     try {
-        const res = await fetch('http://localhost:8000/ask', {
+        const res = await fetch('/ask', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ question })
