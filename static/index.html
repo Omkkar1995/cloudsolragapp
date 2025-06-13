@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pasona ChatBot</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+  <div class="login-container">
+    <h2>Login to Pasona ChatBot</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="handleLogin()">Login</button>
+    <p id="login-error"></p>
+  </div>
+
+  <!-- CHAT APP -->
+  <div id="chat-app" style="display:none;">
+    <div id="navbar">
+      <img src="/static/images/logo.png" alt="Logo" class="logo" />
+      <div>
+        <h1>Pasona ChatBot</h1>
+        <p class="subtitle">福利厚生やカフェテリアポイントについて教えたろう！！</p>
+      </div>
+    </div>
+    <div id="chat-window"></div>
+
+    <div id="footer">
+      <input type="text" id="question" placeholder="Enter your question...">
+      <div class="button-group">
+        <button onclick="askQuestion()">Submit</button>
+        <button onclick="resetChat()" class="reset-btn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+
+</html>

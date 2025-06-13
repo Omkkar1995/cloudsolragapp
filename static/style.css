@@ -1,0 +1,244 @@
+/* === RESET & GLOBAL === */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  /* full-viewport height */
+  display: flex;
+  flex-direction: column;
+  /* top-to-bottom layout */
+  padding-top: 70px; /* Match navbar height */
+  padding-bottom: 60px; /* approximate footer height */
+}
+
+/* === NAVBAR === */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px; /* Optional: define height explicitly */
+  background-color: #cb0c0c;
+  color: #fff;
+  padding: 15px 20px;
+  border-bottom: 2px solid #ff002b;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+
+#navbar h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+#navbar .subtitle {
+  margin: 2px 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* === MAIN CHAT APP === */
+#chat-app {
+  /* make the chat area consume all remaining space */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Chat window (scrollable middle section) */
+#chat-window {
+  position: absolute;
+  top: 70px;      /* height of the fixed navbar */
+  bottom: 60px;   /* height of the fixed footer */
+  left: 0;
+  right: 0;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f9f9f9;
+  border-top: 1px solid #ccc;
+}
+
+
+/* Markdown formatting inside chat window */
+#chat-window h1,
+#chat-window h2,
+#chat-window h3,
+#chat-window h4,
+#chat-window h5,
+#chat-window h6 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d20b0b;
+  margin: 12px 0 6px;
+}
+
+#chat-window p,
+#chat-window li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #222;
+  margin: 4px 0;
+}
+
+#chat-window ul {
+  padding-left: 20px;
+}
+
+/* Individual chat messages */
+.chat-entry {
+  margin-bottom: 15px;
+}
+
+.user {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.bot {
+  color: #de0c0c;
+}
+
+
+input[type="text"] {
+  flex: 1;
+  /* grow to fill width */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* === SPINNER (unchanged) === */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #007acc;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login-container {
+  width: 300px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  background: #fefefe;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #b60000;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #b80230;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #a10553;
+}
+
+#login-error {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  gap: 10px;
+  z-index: 1000;
+}
+
+#footer input[type="text"] {
+  flex: 1;
+  font-size: 1em;
+  padding: 10px 14px;
+  height: 40px;
+  /* Match button height */
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.button-group button {
+  height: 40px;
+  /* Match input height */
+  padding: 0 16px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.reset-btn {
+  background: #e74c3c;
+  color: white;
+  border: 1px solid #e74c3c;
+}
