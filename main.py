@@ -27,13 +27,14 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # SQL config
 conn_str = (
-    f'DRIVER={{ {os.getenv("AZURE_SQL_DRIVER")} }};'
+    f'DRIVER={{{os.getenv("AZURE_SQL_DRIVER")}}};'
     f'SERVER={os.getenv("AZURE_SQL_SERVER")};'
     f'DATABASE={os.getenv("AZURE_SQL_DATABASE")};'
     f'UID={os.getenv("AZURE_SQL_USERNAME")};'
     f'PWD={os.getenv("AZURE_SQL_PASSWORD")};'
     'Encrypt=yes;TrustServerCertificate=no;'
 )
+
 # Serve the main HTML page
 @app.get("/")
 def serve_homepage():
