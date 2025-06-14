@@ -1,31 +1,38 @@
 function handleLogin() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    if (username === "" || password === "") {
+    const validUsers = {
+        admin: "adminpass",
+        user1: "user123"
+    };
+
+    if (!username || !password) {
         document.getElementById("login-error").textContent = "Username and password required.";
         return;
     }
 
-    fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-    })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                document.querySelector(".login-container").style.display = "none";
-                document.getElementById("chat-app").style.display = "flex";
-
-            } else {
-                document.getElementById("login-error").textContent = data.message || "Login failed.";
-            }
-        })
-        .catch(() => {
-            document.getElementById("login-error").textContent = "Server error.";
-        });
+    if (validUsers[username] && validUsers[username] === password) {
+        localStorage.setItem("loggedInUser", username);  // ✅ Save login state
+        showChat();
+    } else {
+        document.getElementById("login-error").textContent = "Invalid credentials.";
+    }
 }
+
+function showChat() {
+    document.querySelector(".login-container").style.display = "none";
+    document.getElementById("chat-app").style.display = "flex";
+}
+
+
+window.onload = function () {
+    const user = localStorage.getItem("loggedInUser");
+    if (user) {
+        showChat();  // ✅ Automatically log in
+    }
+};
+
 
 let chatHistory = [];
 

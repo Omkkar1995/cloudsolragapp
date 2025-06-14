@@ -41,28 +41,28 @@ def serve_homepage():
     return FileResponse("static/index.html")
 
 # Handle login
-@app.post("/login")
-async def login(request: Request):
-    data = await request.json()
-    username = data.get("username")
-    password = data.get("password")
+# @app.post("/login")
+# async def login(request: Request):
+#     data = await request.json()
+#     username = data.get("username")
+#     password = data.get("password")
 
-    try:
-        conn = pyodbc.connect(conn_str)
-        cursor = conn.cursor()
-        cursor.execute(
-            "SELECT * FROM Users WHERE Username = ? AND Password = ?", (username, password)
-        )
-        row = cursor.fetchone()
-        conn.close()
+#     try:
+#         conn = pyodbc.connect(conn_str)
+#         cursor = conn.cursor()
+#         cursor.execute(
+#             "SELECT * FROM Users WHERE Username = ? AND Password = ?", (username, password)
+#         )
+#         row = cursor.fetchone()
+#         conn.close()
 
-        if row:
-            return {"success": True}
-        else:
-            return {"success": False, "message": "Invalid credentials"}
+#         if row:
+#             return {"success": True}
+#         else:
+#             return {"success": False, "message": "Invalid credentials"}
 
-    except Exception as e:
-        return {"success": False, "message": str(e)}
+#     except Exception as e:
+#         return {"success": False, "message": str(e)}
     
 
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
