@@ -10,6 +10,7 @@ import requests, os
 
 app = FastAPI()
 
+
 # ✅ Enable CORS to allow frontend JS to hit backend
 app.add_middleware(
     CORSMiddleware,
